@@ -1,0 +1,38 @@
+
+<img src="/assets/img/register.png" class="mx-auto d-block">
+<form [formGroup]="_userService.formModel" autocomplete="off" (submit)="onSubmit()">
+  <div class="form-group required">
+    <label>Username</label>
+    <input class="form-control" formControlName="UserName">
+    <label class="text-danger" *ngIf="_userService.formModel.get('UserName').touched && _userService.formModel.get('UserName').errors?.required">Username is required</label>
+  </div>
+  <div class="form-group required">
+    <label>Email</label>
+    <input class="form-control" formControlName = "Email">
+    <label class="text-danger" *ngIf="_userService.formModel.get('Email').touched && _userService.formModel.get('Email').errors?.email">Email is not valid</label>
+  </div>
+  <div class="form-group required">
+    <label>Full name</label>
+    <input class="form-control" formControlName = "FullName">
+  </div>
+  <div formGroupName="Passwords">
+    <div class="form-group required">
+      <label>Password</label>
+      <input type="password" class="form-control" formControlName = "Password"> 
+      <label class="text-danger" *ngIf="_userService.formModel.get('Passwords.Password').touched && _userService.formModel.get('Passwords.Password').errors?.required">Password is required</label>
+      <label class="text-danger" *ngIf="_userService.formModel.get('Passwords.Password').touched && _userService.formModel.get('Passwords.Password').errors?.minlength">Min length - 4</label>
+    </div>
+    <div class="form-group required">
+      <label>Confirm password</label>
+      <input type="password"  class="form-control" formControlName = "ConfirmPassword"> 
+      <label class="text-danger" *ngIf="_userService.formModel.get('Passwords.ConfirmPassword').touched && _userService.formModel.get('Passwords.ConfirmPassword').errors?.required">Password is required</label>
+      <label class="text-danger" *ngIf="_userService.formModel.get('Passwords.ConfirmPassword').touched && _userService.formModel.get('Passwords.ConfirmPassword').errors?.passwordMismatch">Passwords don't match</label>
+    </div>
+    <div class="form-row">
+      <div class="form-group col-md-8 offset-md-2">
+          <button type="submit" class="btn btn-primary btn-lg btn-block" [disabled]="!_userService.formModel.valid">Register</button>
+      </div>
+    </div>
+  </div>
+</form>
+   
