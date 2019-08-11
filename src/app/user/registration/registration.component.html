@@ -28,11 +28,32 @@
       <label class="text-danger" *ngIf="_userService.formModel.get('Passwords.ConfirmPassword').touched && _userService.formModel.get('Passwords.ConfirmPassword').errors?.required">Password is required</label>
       <label class="text-danger" *ngIf="_userService.formModel.get('Passwords.ConfirmPassword').touched && _userService.formModel.get('Passwords.ConfirmPassword').errors?.passwordMismatch">Passwords don't match</label>
     </div>
+  </div>
+    <fieldset class="form-group">
+        <div class="row">
+          <legend class="col-form-label col-sm-2 pt-0"><label>Role</label></legend>
+          <div class="col-sm-10">
+            <div class="form-check">
+              <input class="form-check-input" formControlName = "Role" type="radio" name="Role" id="LandlordRadio" value="Landlord" checked="checked">
+              <label class="form-check-label" for="LandlordRadio">
+                <label>Landlord</label>
+              </label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" formControlName = "Role" type="radio" name="Role" id="TenantRadio" value="Tenant">
+              <label class="form-check-label" for="Tenant">
+                <label>Tenant</label>
+              </label>
+            </div>
+            <label class="text-danger" *ngIf="_userService.formModel.get('Role').touched && _userService.formModel.get('Role').errors?.email">Set role</label>
+          </div>
+        </div>
+      </fieldset>
+   
     <div class="form-row">
       <div class="form-group col-md-8 offset-md-2">
           <button type="submit" class="btn btn-primary btn-lg btn-block" [disabled]="!_userService.formModel.valid">Register</button>
       </div>
-    </div>
   </div>
 </form>
    

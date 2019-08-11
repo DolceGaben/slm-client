@@ -27,6 +27,14 @@ div.form-group label:not(.text-danger){
     font-weight: 700;
 }
 
+div.form-check label:not(.text-danger){
+    color: #545d6a;
+    font-weight: 700;
+}
+legend label:not(.text-danger){
+    color: #545d6a;
+    font-weight: 700;
+}
 div.form-group.required>label:first-child:after{
     content:'*';
     color: #fff;
