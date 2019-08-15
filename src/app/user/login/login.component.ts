@@ -26,7 +26,11 @@ export class LoginComponent implements OnInit {
     this._userService.login(form.value).subscribe(
       (res:any) =>{
         localStorage.setItem('token',res.token);
-        this.router.navigateByUrl('/home');
+        if(this._userService.roleMatch(["Landlord"])){
+          this.router.navigateByUrl('/homelandlord');
+        }else{
+          this.router.navigateByUrl('/hometenant');
+        }
         this.toastr.success('Login successed','Loged in')
       },
       err =>{

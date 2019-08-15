@@ -50,6 +50,7 @@ export class UserService {
     var tokenHeader = new HttpHeaders({'Authorization':'Bearer '+ localStorage.getItem('token')})
     return this.http.get(this.BaseURI + '/UserProfile',{headers : tokenHeader});
   }
+  
   roleMatch(allowedRoles): boolean {
     var isMatch = false;
     var payLoad = JSON.parse(window.atob(localStorage.getItem('token').split('.')[1]));

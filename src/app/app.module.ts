@@ -10,9 +10,10 @@ import {HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { LoginComponent } from './user/login/login.component';
-import { HomeComponent } from './home/home.component';
 import { AuthInterceptor } from './auth/auth.interceptor';
 import { ForbiddenComponent } from './forbidden/forbidden.component';
+import { HomelandlordComponent } from './homelandlord/homelandlord.component';
+import { HometenantComponent } from './hometenant/hometenant.component';
 
 
 @NgModule({
@@ -21,8 +22,9 @@ import { ForbiddenComponent } from './forbidden/forbidden.component';
     UserComponent,
     RegistrationComponent,
     LoginComponent,
-    HomeComponent,
-    ForbiddenComponent
+    ForbiddenComponent,
+    HomelandlordComponent,
+    HometenantComponent
   ],
   imports: [
     BrowserModule,

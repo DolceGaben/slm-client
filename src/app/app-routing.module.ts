@@ -3,9 +3,10 @@ import { Routes, RouterModule } from '@angular/router';
 import { UserComponent } from './user/user.component';
 import { RegistrationComponent } from './user/registration/registration.component';
 import { LoginComponent } from './user/login/login.component';
-import { HomeComponent } from './home/home.component';
 import { AuthGuard } from './auth/auth.guard';
 import { ForbiddenComponent } from './forbidden/forbidden.component';
+import { HomelandlordComponent } from './homelandlord/homelandlord.component';
+import { HometenantComponent } from './hometenant/hometenant.component';
 
 const routes: Routes = [
   {path:'',redirectTo:'/user/login',pathMatch:'full'}, 
@@ -16,7 +17,8 @@ const routes: Routes = [
       {path:'login', component : LoginComponent}
     ]
   },
-  {path:'home',component : HomeComponent, canActivate:[AuthGuard]},
+  {path:'homelandlord',component : HomelandlordComponent, canActivate:[AuthGuard],data:{permittedRoles:['Landlord']}},
+  {path:'hometenant',component : HometenantComponent, canActivate:[AuthGuard],data:{permittedRoles:['Tenant']}},
   {path:'forbidden',component: ForbiddenComponent}
 ];
 
