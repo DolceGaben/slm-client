@@ -20,6 +20,11 @@ export class UserService {
       Password : ['',[Validators.required,Validators.minLength(4)]],
       ConfirmPassword :['',Validators.required]},{validators : this.comparePasswords})
   });
+  profileFormModel = this.fb.group({
+    UserName :['',Validators.required],
+    Email :['',Validators.email],
+    FullName :['',Validators.required],
+  })
 
   comparePasswords(fb : FormGroup){
     let confirmPasswordCtrl = fb.get('ConfirmPassword');

@@ -14,6 +14,9 @@ import { AuthInterceptor } from './auth/auth.interceptor';
 import { ForbiddenComponent } from './forbidden/forbidden.component';
 import { HomelandlordComponent } from './homelandlord/homelandlord.component';
 import { HometenantComponent } from './hometenant/hometenant.component';
+import { NavbarComponent } from './navbar/navbar.component';
+import { ProfileComponent } from './user/profile/profile.component';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 
 @NgModule({
@@ -24,7 +27,9 @@ import { HometenantComponent } from './hometenant/hometenant.component';
     LoginComponent,
     ForbiddenComponent,
     HomelandlordComponent,
-    HometenantComponent
+    HometenantComponent,
+    NavbarComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,
@@ -33,7 +38,8 @@ import { HometenantComponent } from './hometenant/hometenant.component';
     HttpClientModule,
     BrowserAnimationsModule,
     ToastrModule.forRoot(),
-    FormsModule
+    FormsModule,
+    NgbModule
   ],
   providers: [UserService,{
     provide : HTTP_INTERCEPTORS,

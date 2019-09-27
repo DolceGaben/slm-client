@@ -1,0 +1,50 @@
+<app-navbar></app-navbar>
+<div class="card mt-2">
+  <div class="container">
+    <div class="row">
+      <div class="col-6">
+        <img src="/assets/img/login.png" class="mx-auto d-block">
+      </div>
+      <div class="col-6" *ngIf="!editing">
+        <div class="row">
+          <h4><b>Full name: {{userProfile.fullName}}</b></h4>
+        </div>  
+        <div class="row">
+          <p>Email: {{userProfile.email}}</p>
+        </div>
+        <div class="row">
+          <p>User name: {{userProfile.userName}}</p>
+        </div>
+        <div class="row">
+          <button type="button" class="btn btn-primary" (onclick)="editMode()">Edit</button>
+        </div>
+    </div>
+    <div *ngIf="editing">
+        <form [formGroup]="_userService.profileFormModel" autocomplete="off" (submit)="onSubmit()">
+            <div class="form-group required">
+              <label>Username</label>
+              <input class="form-control" type="text" formControlName="UserName" value="{{userProfile.userName}}">
+              <label class="text-danger" *ngIf="_userService.profileFormModel.get('UserName').touched && _userService.profileFormModel.get('UserName').errors?.required">Username is required</label>
+            </div>
+            <div class="form-group required">
+              <label>Email</label>
+              <input class="form-control" formControlName = "Email" value="{{userProfile.email}}">
+              <label class="text-danger" *ngIf="_userService.profileFormModel.get('Email').touched && _userService.profileFormModel.get('Email').errors?.email">Email is not valid</label>
+            </div>
+            <div class="form-group required">
+              <label>Full name</label>
+              <input class="form-control" formControlName = "FullName" value="{{userProfile.fullName}}">
+            </div>
+             
+              <div class="form-row">
+                <div class="form-group col-md-8 offset-md-2">
+                    <button type="submit" class="btn btn-primary btn-lg btn-block" [disabled]="!_userService.formModel.valid">Save</button>
+                    <button class="btn btn-primary btn-lg btn-block">Cancel</button>
+                </div>
+            </div>
+          </form>
+          <button class="btn btn-lg btn-outline-primary" (click)="open()">Launch demo modal</button>
+    </div>
+  </div>
+</div>
+  
