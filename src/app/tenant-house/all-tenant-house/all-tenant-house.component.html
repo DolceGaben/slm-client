@@ -1,0 +1,19 @@
+<div class="row mt-2 houses" *ngFor="let house of houses;">
+    <div class="col-4 p-2">
+          <img src="/assets/img/house-example.png" alt="house-example" class="img-thumbnail">
+    </div>
+    <div class="col-4 p-2" *ngIf="!edit">
+        <div class="row p-1">
+         <span>Name: {{house.name}} </span>   
+        </div>
+        <div class="row p-1">
+          <span>Address: {{house.address}} </span> 
+        </div>
+    </div>
+
+    <div class="col text-right p-2"> 
+          <button type="button" class="btn btn-danger" (click)="sendApplication(house)">Send application</button>
+    <div>
+    </div>
+  </div>
+</div>

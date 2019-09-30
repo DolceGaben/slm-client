@@ -1,0 +1,27 @@
+<div>
+    <h2>Update a house</h2>
+    <form>
+  
+      <div class="form-group">
+        <label for="houseName">myHouseAddress name</label>
+        <input id="houseName" name="houseName" class="form-control" required
+            [(ngModel)]="house.name" #myHouseName="ngModel" >
+       
+        <div [hidden]="myHouseName.valid" class="alert alert-danger">
+          House name is required
+        </div>
+  </div>
+  
+      <div class="form-group">
+        <label for="address">Address</label>
+        <input id="address" name="address" class="form-control" required
+          [(ngModel)]="house.address" #myHouseAddress="ngModel" >    
+          <div [hidden]="myHouseAddress.valid" class="alert alert-danger">
+              Address is required
+            </div>
+        </div>  
+        <div class="col text-center">
+      <button [disabled]="!myHouseName.valid || !myHouseAddress.valid" type="submit" class="btn btn-success" (click)="updateHouse(house)">Submit</button>
+        </div>
+      </form> 
+</div>

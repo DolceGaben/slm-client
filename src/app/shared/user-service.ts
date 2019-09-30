@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { UserProfile } from '../userprofile';
+import { House } from '../house';
 
 
 @Injectable()
@@ -20,11 +22,6 @@ export class UserService {
       Password : ['',[Validators.required,Validators.minLength(4)]],
       ConfirmPassword :['',Validators.required]},{validators : this.comparePasswords})
   });
-  profileFormModel = this.fb.group({
-    UserName :['',Validators.required],
-    Email :['',Validators.email],
-    FullName :['',Validators.required],
-  })
 
   comparePasswords(fb : FormGroup){
     let confirmPasswordCtrl = fb.get('ConfirmPassword');
@@ -68,6 +65,51 @@ export class UserService {
     });
     return isMatch;
   }
+  
+  editProfile(userProfile : UserProfile){
+    return this.http.post(this.BaseURI+'/UserProfile/EditProfile',userProfile);
+  }
+  getLandlordHouses(filter : string){
+    return this.http.get(this.BaseURI+'/House/GetLandlordHouses?Filter='+filter);
+  }
+  getTenantHouses(filter : string){
+    return this.http.get(this.BaseURI+'/House/GetTenantHouses?Filter='+filter);
+  }
+  createHouse(house : House){
+    return this.http.post(this.BaseURI+'/House/CreateHouse',house);
+  }
+  updateHouse(house : House){
+    return this.http.post(this.BaseURI+'/House/UpdateHouse',house);
+  }
+  getHouseById(id){
+    return this.http.get(this.BaseURI+'/House/GetHouseById?Id='+id);
+  }
+  deleteHouse(id){
+    return this.http.get(this.BaseURI+'/House/DeleteHouse?Id='+id);
+  }
+  getTenantList(){
+    return this.http.get(this.BaseURI+'/Message/GetTenantList');
+  }
+  getLandlordList(){
+    return this.http.get(this.BaseURI+'/Message/GetLandlordList');
+  }
+  sendMessage(body){
+    return this.http.post(this.BaseURI+"/Message/SendMessage",body);
+  }
+  sendApplication(body){
+    return this.http.post(this.BaseURI+"/Application/SendApplication",body);
+  }
+  getLandlordApplications(status){
+    return this.http.get(this.BaseURI+"/Application/GetLandlordApplications?Status="+status);
+  }
+  updateApplication(app){
+    return  this.http.post(this.BaseURI+"/Application/UpdateApplication",app);
+  }
+  getTenantAcceptedHouses(filter){
+    return this.http.get(this.BaseURI+"/House/GetTenantAcceptedHouses?Filter="+filter);
+  }
+
+
 }
 
 

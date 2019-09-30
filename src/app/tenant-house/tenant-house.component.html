@@ -1,0 +1,31 @@
+<app-navbar></app-navbar>
+<div>
+    <img src="/assets/img/houselandlord.jpg" class="img-fluid" alt="Responsive image">
+</div>
+<div class="container">
+    <div class="row">
+        <div class="search-container col-4 p-2">
+        <form class="m-0">
+            <input class="shadow mt-2" type="text" [(ngModel)]="filter" placeholder="Search.." name="search">
+            <button type="submit" (click)="search()"><i class="fa fa-search"></i></button>
+        </form>
+        </div>
+    </div>
+    <ul class="nav nav-pills p-2 mt-2">
+        <li class="nav-item">
+          <a class="nav-link active" data-toggle="tab" href="#home">All houses</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" data-toggle="tab" href="#menu1">My houses</a>
+        </li>
+      </ul>
+      
+      <!-- Tab panes -->
+      <div class="tab-content">
+        <div class="tab-pane active container" id="home"><app-all-tenant-house></app-all-tenant-house></div>
+        <div class="tab-pane container" id="menu1"><app-accepted-tenant-house></app-accepted-tenant-house></div>
+      </div>
+    </div>
+    
+
+

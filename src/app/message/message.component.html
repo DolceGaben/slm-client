@@ -1,0 +1,25 @@
+<app-navbar></app-navbar>
+<div class="container">
+    <div class="card mt-2" *ngFor="let user of users">
+  <div class="row">
+    <div class="col-4 p-3">
+      <img src="/assets/img/message-picture.png" alt="message-person" class="mx-auto d-block">
+    </div>
+    <div class="col-4 mt-2">
+        <div class="row">
+
+            <h4><b>Full Name: {{user.fullName}}</b></h4>
+        </div>
+        <div class="row">
+            Email : {{user.email}}
+        </div>
+    </div>
+    <div class="col-4 mt-2">
+            <div class="col text-right p-2"> 
+            <button class="btn btn-slm" (click)="onSend(user)">Send a message</button>
+            </div>
+    </div>
+
+</div>
+</div>
+</div>

@@ -1,0 +1,24 @@
+<div class="container">
+    <div class="card mt-1" *ngFor="let app of applications">  
+    <div class="row ml-2 p-2">
+        <div class="col-6">
+            <div class="row">
+                Tenant name : {{app.tenantName}}
+            </div>
+            <div class="row">   
+                House name : {{app.houseName}}
+            </div>
+            <div class="row">
+                Status : {{app.status}}
+            </div>
+        </div>
+        <div class="col-6 text-right">
+
+            <div class="btn-group m-2">
+                    <button class="btn btn-success" (click)="accept(app)">Accept</button>
+                
+            </div>
+        </div>
+    </div>
+</div>
+</div>
